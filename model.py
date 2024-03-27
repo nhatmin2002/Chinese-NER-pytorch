@@ -1,14 +1,14 @@
 import torch.nn as nn
 # from .transformers.modeling_bert import BertPreTrainedModel
 # from .transformers.modeling_bert import BertModel
-from transformers import BertModel, BertPreTrainedModel
+from transformers import BertModel, BertPreTrainedModel,RobertaForTokenClassification,AutoModelFor,RobertaModel
 from torch.nn import CrossEntropyLoss
 # from losses.focal_loss import FocalLoss
 # from losses.label_smoothing import LabelSmoothingCrossEntropy
 from CRF import CRF
 
 
-class BertSoftmaxForNer(BertPreTrainedModel):
+class BertSoftmaxForNer(RobertaForTokenClassification):
     # def __init__(self, config, num_labels):
     #     super(BertSoftmaxForNer, self).__init__(config)
     #     self.num_labels = num_labels
@@ -31,7 +31,7 @@ class BertSoftmaxForNer(BertPreTrainedModel):
     def __init__(self, config):
         super(BertSoftmaxForNer, self).__init__(config)
         self.num_labels = config.num_labels
-        self.bert = BertModel(config)
+        self.bert = RobertaModel(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         #print("number_labels: ", config.num_labels)
         self.classifier = nn.Linear(config.hidden_size, config.num_labels)
@@ -70,10 +70,10 @@ class BertSoftmaxForNer(BertPreTrainedModel):
         return outputs  # (loss), scores, (hidden_states), (attentions)
 
 
-class BertCrfForNer(BertPreTrainedModel):
+class BertCrfForNer(RobertaForTokenClassification):
     def __init__(self, config):
         super(BertCrfForNer, self).__init__(config)
-        self.bert = BertModel(config)
+        self.bert = RobertaModel(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.classifier = nn.Linear(config.hidden_size, config.num_labels)
         self.crf = CRF(num_tags=config.num_labels, batch_first=True)
