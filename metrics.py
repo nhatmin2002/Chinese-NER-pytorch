@@ -68,14 +68,14 @@ def end_of_chunk(prev_tag, tag, prev_type, type_):
     """
     chunk_end = False
 
-    if prev_tag == 'E': chunk_end = True
-    if prev_tag == 'S': chunk_end = True
+    # if prev_tag == 'E': chunk_end = True
+    # if prev_tag == 'S': chunk_end = True
 
     if prev_tag == 'B' and tag == 'B': chunk_end = True
-    if prev_tag == 'B' and tag == 'S': chunk_end = True
+    # if prev_tag == 'B' and tag == 'S': chunk_end = True
     if prev_tag == 'B' and tag == 'O': chunk_end = True
     if prev_tag == 'I' and tag == 'B': chunk_end = True
-    if prev_tag == 'I' and tag == 'S': chunk_end = True
+    # if prev_tag == 'I' and tag == 'S': chunk_end = True
     if prev_tag == 'I' and tag == 'O': chunk_end = True
 
     if prev_tag != 'O' and prev_tag != '.' and prev_type != type_:
@@ -99,13 +99,13 @@ def start_of_chunk(prev_tag, tag, prev_type, type_):
     chunk_start = False
 
     if tag == 'B': chunk_start = True
-    if tag == 'S': chunk_start = True
+    # if tag == 'S': chunk_start = True
 
-    if prev_tag == 'E' and tag == 'E': chunk_start = True
-    if prev_tag == 'E' and tag == 'I': chunk_start = True
-    if prev_tag == 'S' and tag == 'E': chunk_start = True
-    if prev_tag == 'S' and tag == 'I': chunk_start = True
-    if prev_tag == 'O' and tag == 'E': chunk_start = True
+    # if prev_tag == 'E' and tag == 'E': chunk_start = True
+    # if prev_tag == 'E' and tag == 'I': chunk_start = True
+    # if prev_tag == 'S' and tag == 'E': chunk_start = True
+    # if prev_tag == 'S' and tag == 'I': chunk_start = True
+    # if prev_tag == 'O' and tag == 'E': chunk_start = True
     if prev_tag == 'O' and tag == 'I': chunk_start = True
 
     if tag != 'O' and tag != '.' and prev_type != type_:
