@@ -4,27 +4,25 @@ import random
 
 
 def load_dataset(path_dataset):
-    """Load dataset into memory from text file"""
-    dataset = []
-    with open(path_dataset) as f:
-        words, tags = [], []
-        # Each line of the file corresponds to one word and tag
-        for line in f:
-            if line != '\n':
-                line = line.strip('\n')
-                word, tag = line.split(' ')
-                try:
-                    if len(word) > 0 and len(tag) > 0:
-                        word, tag = str(word), str(tag)
-                        words.append(word)
-                        tags.append(tag)
-                except Exception as e:
-                    print('An exception was raised, skipping a word: {}'.format(e))
+    dataset = []  # Tạo một list mới để chứa tokens và labels
+    tmp_tok, tmp_lab = [], []
+    label_set = []
+    with open(path_dataset, 'r', encoding='utf8') as reader:
+        for line in reader:
+            if "IMGID" in line: 
+                a=1
             else:
-                if len(words) > 0:
-                    assert len(words) == len(tags)
-                    dataset.append((words, tags))
-                    words, tags = [], []
+                line = line.strip()
+                cols = line.split('\t')
+                if len(cols) < 2:
+                    if len(tmp_tok) > 0:
+                        dataset.append((tmp_tok, tmp_lab))  # Thêm tokens và labels vào dataset
+                    tmp_tok = []
+                    tmp_lab = []
+                else:
+                    tmp_tok.append(cols[0])
+                    tmp_lab.append(cols[-1])
+                    label_set.append(cols[-1])
     return dataset
 
 
@@ -79,18 +77,18 @@ if __name__ == '__main__':
     dataset_test = load_dataset(path_test)
     print('- done.')
 
-    # Make a list that decides the order in which we go over the data
-    order_t = list(range(len(dataset_train_val)))
-    order_d = list(range(len(dataset_dev)))
+    # # Make a list that decides the order in which we go over the data
+    # order_t = list(range(len(dataset_train_val)))
+    # order_d = list(range(len(dataset_dev)))
 
-    random.seed(2019)
-    random.shuffle(order_t)
-    random.shuffle(order_d)
+    # random.seed(2019)
+    # random.shuffle(order_t)
+    # random.shuffle(order_d)
 
-    # Split the dataset into train, val(split with shuffle) and test
-    train_dataset = [dataset_train_val[idx] for idx in order_t[:]]  # 42000 for train
-    val_dataset = [dataset_dev[idx] for idx in order_d[:]]  # 3000 for val
-    test_dataset = dataset_test  # 3442 for test
+    # # Split the dataset into train, val(split with shuffle) and test
+    # train_dataset = [dataset_train_val[idx] for idx in order_t[:]]  # 42000 for train
+    # val_dataset = [dataset_dev[idx] for idx in order_d[:]]  # 3000 for val
+    # test_dataset = dataset_test  # 3442 for test
     save_dataset(train_dataset, 'CNMERdata/train')
     save_dataset(val_dataset, 'CNMERdata/val')
     save_dataset(test_dataset, 'CNMERdata/test')
