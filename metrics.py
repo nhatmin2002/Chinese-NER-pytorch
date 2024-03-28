@@ -147,6 +147,8 @@ def f1_score(y_true, y_pred, average='micro', digits=2, suffix=False):
         >>> f1_score(y_true, y_pred)
         0.50
     """
+    print(y_true)
+    print(y_pred)
     true_entities = set(get_entities(y_true, suffix))
     pred_entities = set(get_entities(y_pred, suffix))
 
