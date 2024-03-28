@@ -48,6 +48,8 @@ class DataLoader(object):
         with open(sentences_file, 'r') as file:
             # i = 0
             for line in file:
+                print(line)
+                print(line.strip())
                 # replace each token by its index
                 tokens = self.tokenizer.tokenize(line.strip())
                 sentences.append(self.tokenizer.convert_tokens_to_ids(tokens))
@@ -60,6 +62,9 @@ class DataLoader(object):
         
         with open(tags_file, 'r') as file:
             for line in file:
+                print(line)
+                print(line.strip().split(' '))
+
                 # replace each tag by its index
                 tag_seq = [self.tag2idx.get(tag) for tag in line.strip().split(' ')]
                 tags.append(tag_seq)
@@ -67,13 +72,13 @@ class DataLoader(object):
         # checks to ensure there is a tag for each token
         assert len(sentences) == len(tags)
         for i in range(len(sentences))[::-1]:
-            print("i: ",i)
+            # print("i: ",i)
             if(len(tags[i]) != len(sentences[i])):
-                print("i: ", i)
-                print("tags: ", tags[i])
-                print("tag_length: ", len(tags[i]))
-                print("setences: ", sentences[i])
-                print("setences_length: ", len(sentences[i]))
+                # print("i: ", i)
+                # print("tags: ", tags[i])
+                # print("tag_length: ", len(tags[i]))
+                # print("setences: ", sentences[i])
+                # print("setences_length: ", len(sentences[i]))
                 sentences.pop(i)
                 tags.pop(i)
         for i in range(len(sentences)):
