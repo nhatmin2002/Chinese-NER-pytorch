@@ -1,7 +1,7 @@
 import torch.nn as nn
 # from .transformers.modeling_bert import BertPreTrainedModel
 # from .transformers.modeling_bert import BertModel
-from transformers import BertModel, BertPreTrainedModel,RobertaForTokenClassification,AutoModelFor,RobertaModel
+from transformers import BertModel, BertPreTrainedModel,RobertaForTokenClassification,RobertaModel
 from torch.nn import CrossEntropyLoss
 # from losses.focal_loss import FocalLoss
 # from losses.label_smoothing import LabelSmoothingCrossEntropy
