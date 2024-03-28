@@ -196,7 +196,7 @@ def accuracy_score(y_true, y_pred):
     return score
 
 
-def classification_report(y_true, y_pred, digits=2, suffix=False):
+def classification_report(y_true, y_pred, digits=5, suffix=False):
     """Build a text report showing the main classification metrics.
 
     Args:
