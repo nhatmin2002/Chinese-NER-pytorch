@@ -67,13 +67,13 @@ class DataLoader(object):
         # checks to ensure there is a tag for each token
         assert len(sentences) == len(tags)
         for i in range(len(sentences))[::-1]:
-            #print("i: ",i)
+            print("i: ",i)
             if(len(tags[i]) != len(sentences[i])):
-                # print("i: ", i)
-                # print("tags: ", tags[i])
-                # print("tag_length: ", len(tags[i]))
-                # print("setences: ", sentences[i])
-                # print("setences_length: ", len(sentences[i]))
+                print("i: ", i)
+                print("tags: ", tags[i])
+                print("tag_length: ", len(tags[i]))
+                print("setences: ", sentences[i])
+                print("setences_length: ", len(sentences[i]))
                 sentences.pop(i)
                 tags.pop(i)
         for i in range(len(sentences)):
