@@ -13,6 +13,7 @@ from tqdm import trange
 
 # from pytorch_pretrained_bert import BertForTokenClassification
 from transformers import BertModel, BertTokenizer
+from transformers import BertModel, BertTokenizer,AutoTokenizer,RobertaModel
 
 from data_loader import DataLoader
 from evaluate import evaluate
