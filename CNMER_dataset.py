@@ -64,9 +64,9 @@ def build_tags(data_dir, tags_file):
 
 if __name__ == '__main__':
     # Check that the dataset exist, two balnk lines at the end of the file
-    path_train_val = 'CNMERdata/example.train'
-    path_dev = 'CNMERdata/example.dev'
-    path_test = 'CNMERdata/example.test'
+    path_train_val = 'CNMERdata/train.txt'
+    path_dev = 'CNMERdata/dev.txt'
+    path_test = 'CNMERdata/test.txt'
     msg = '{} or {} file not found. Make sure you have downloaded the right dataset'.format(path_train_val, path_test)
     assert os.path.isfile(path_train_val) and os.path.isfile(path_test), msg
 
