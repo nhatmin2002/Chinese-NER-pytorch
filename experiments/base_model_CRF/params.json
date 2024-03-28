@@ -2,7 +2,7 @@
     "full_finetuning": true,
     "max_len": 256,
 
-    "learning_rate": 3e-4,
+    "learning_rate": 3e-5,
     "weight_decay": 0.01,
     "clip_grad": 2,
 
