@@ -49,7 +49,6 @@ class DataLoader(object):
             # i = 0
             for line in file:
                 print(line)
-                print(line.strip())
                 # replace each token by its index
                 tokens = self.tokenizer.tokenize(line.strip())
                 sentences.append(self.tokenizer.convert_tokens_to_ids(tokens))
@@ -62,7 +61,6 @@ class DataLoader(object):
         
         with open(tags_file, 'r') as file:
             for line in file:
-                print(line)
                 print(line.strip().split(' '))
 
                 # replace each tag by its index
