@@ -36,6 +36,7 @@ class DataLoader(object):
         with open(file_path, 'r') as file:
             for tag in file:
                 tags.append(tag.strip())
+        print(tags[0])
         return tags
 
     def load_sentences_tags(self, sentences_file, tags_file, d):
@@ -47,8 +48,8 @@ class DataLoader(object):
 
         with open(sentences_file, 'r') as file:
             # i = 0
+            print(file.readline())
             for line in file:
-                print(line)
                 # replace each token by its index
                 tokens = self.tokenizer.tokenize(line.strip())
                 sentences.append(self.tokenizer.convert_tokens_to_ids(tokens))
@@ -61,7 +62,6 @@ class DataLoader(object):
         
         with open(tags_file, 'r') as file:
             for line in file:
-                print(line.strip().split(' '))
 
                 # replace each tag by its index
                 tag_seq = [self.tag2idx.get(tag) for tag in line.strip().split(' ')]
