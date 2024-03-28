@@ -62,7 +62,6 @@ class DataLoader(object):
             for line in file:
                 # replace each tag by its index
                 tag_seq = [self.tag2idx.get(tag) for tag in line.strip().split(' ')]
-                print(tag_seq)
                 tags.append(tag_seq)
 
         # checks to ensure there is a tag for each token
@@ -82,9 +81,7 @@ class DataLoader(object):
 
         # storing sentences and tags in dict d
         d['data'] = sentences
-        print(d['data'][:2])
         d['tags'] = tags
-        print(d['tags'])
         d['size'] = len(sentences)
 
     def load_data(self, data_type):
