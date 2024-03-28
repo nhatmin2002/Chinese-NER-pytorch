@@ -82,6 +82,7 @@ class DataLoader(object):
 
         # storing sentences and tags in dict d
         d['data'] = sentences
+        print(d['data'][:2])
         d['tags'] = tags
         print(d['tags'])
         d['size'] = len(sentences)
