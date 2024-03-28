@@ -62,6 +62,7 @@ class DataLoader(object):
             for line in file:
                 # replace each tag by its index
                 tag_seq = [self.tag2idx.get(tag) for tag in line.strip().split(' ')]
+                print(tag_seq)
                 tags.append(tag_seq)
 
         # checks to ensure there is a tag for each token
