@@ -39,19 +39,19 @@ def get_entities(seq, suffix=False):
     for i, chunk in enumerate(seq + ['O']):
         if suffix:
             tag = chunk[-1]
-            print('tag',tag)
+            # print('tag',tag)
             parts = chunk.split('-')
 
             type_ = '-'.join(parts[1:])
-            print('type',type_)
+            # print('type',type_)
 
         else:
             tag = chunk[0]
-            print('tag',tag)
+            # print('tag',tag)
             parts = chunk.split('-')
 
             type_ = '-'.join(parts[1:])
-            print('type',type_)
+            # print('type',type_)
 
         if end_of_chunk(prev_tag, tag, prev_type, type_):
             chunks.append((prev_type, begin_offset, i-1))
