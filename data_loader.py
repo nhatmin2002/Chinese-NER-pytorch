@@ -36,7 +36,6 @@ class DataLoader(object):
         with open(file_path, 'r') as file:
             for tag in file:
                 tags.append(tag.strip())
-        print(tags[0])
         return tags
 
     def load_sentences_tags(self, sentences_file, tags_file, d):
