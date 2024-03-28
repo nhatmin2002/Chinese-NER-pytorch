@@ -89,9 +89,9 @@ if __name__ == '__main__':
     # train_dataset = [dataset_train_val[idx] for idx in order_t[:]]  # 42000 for train
     # val_dataset = [dataset_dev[idx] for idx in order_d[:]]  # 3000 for val
     # test_dataset = dataset_test  # 3442 for test
-    save_dataset(train_dataset, 'CNMERdata/train')
-    save_dataset(val_dataset, 'CNMERdata/val')
-    save_dataset(test_dataset, 'CNMERdata/test')
+    save_dataset(dataset_train_val, 'CNMERdata/train')
+    save_dataset(dataset_dev, 'CNMERdata/val')
+    save_dataset(dataset_test, 'CNMERdata/test')
 
     # Build tags from dataset
     build_tags('CNMERdata', 'CNMERdata/tags.txt')
