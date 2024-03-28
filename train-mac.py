@@ -158,6 +158,7 @@ if __name__ == '__main__':
 
     # Use GPUs if available
     params.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(params.device)
     params.n_gpu = torch.cuda.device_count()
     params.multi_gpu = args.multi_gpu
 
