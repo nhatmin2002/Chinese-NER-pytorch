@@ -189,6 +189,8 @@ if __name__ == '__main__':
     # tokenizer = BertTokenizer.from_pretrained("hfl/chinese-macbert-base")
     # model = BertModel.from_pretrained(args.bert_model_dir, num_labels=len(params.tag2idx))
     # model = BertModel.from_pretrained("hfl/chinese-macbert-base")
+    print(len(params.tag2idx))
+    print(params.tag2idx))
     model = model.BertCrfForNer.from_pretrained(args.bert_model_dir, num_labels=len(params.tag2idx))
     model.to(params.device)
     if args.fp16:
