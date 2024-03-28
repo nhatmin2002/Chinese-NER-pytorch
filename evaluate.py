@@ -9,7 +9,7 @@ import numpy as np
 import torch
 
 #from pytorch_pretrained_bert import BertForTokenClassification, BertConfig
-from transformers import BertModel, BertTokenizer, BertConfig
+from transformers import BertModel, BertTokenizer, BertConfig,RobertaModel,RobertaConfig,AutoTokenizer
 
 from metrics import f1_score
 from metrics import classification_report
